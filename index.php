@@ -102,7 +102,7 @@
                         <?php
 
                         if (isset($_SESSION['listaDePacientesLlamados']) && is_array($_SESSION['listaDePacientesLlamados'])) {
-                            $pacientes = $_SESSION['listaDePacientesLlamados'];
+                            $pacientes = array_reverse($_SESSION['listaDePacientesLlamados']);
 
                             foreach ($pacientes as $key => $paciente) {
 
@@ -136,9 +136,9 @@
 
             <?php
 
-            if (isset($pacienteNombre) && isset($consultorioNombre)) {
+            if (isset($pacientes)) {
 
-                echo $pacienteNombre . ' - ' . $consultorioNombre;
+                echo $pacientes[0]['paciente'] . ' - ' . $pacientes[0]['consultorio'];
             }
 
             ?>
@@ -190,7 +190,7 @@
                     <?php
 
                     if (isset($_SESSION['listaDePacientesLlamados']) && is_array($_SESSION['listaDePacientesLlamados'])) {
-                        $pacientes = $_SESSION['listaDePacientesLlamados'];
+                        $pacientes = array_reverse($_SESSION['listaDePacientesLlamados']);
 
                         foreach ($pacientes as $key => $paciente) {
 
@@ -261,7 +261,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             background-color: rgb(0, 0, 155);
             color: white;
             height: 70px;
@@ -308,6 +307,7 @@
         .listaLlamados {
             position: absolute;
             top: 60px;
+            left: 0px;
             height: 412px;
             overflow: hidden;
         }
